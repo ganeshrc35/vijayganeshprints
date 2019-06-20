@@ -1,0 +1,22 @@
+{
+  "name": "vijayganeshprints",
+  "version": "1.0.0",
+  "description": "My first express app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ganeshrc35/vijayganeshprints.git"
+  },
+  "author": "Ganesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ganeshrc35/vijayganeshprints/issues"
+  },
+  "homepage": "https://github.com/ganeshrc35/vijayganeshprints#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
