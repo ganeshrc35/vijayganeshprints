@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var session = require('express-session');
-var passport = require('passport-local');
+var passport = require('passport');
 
 require('./passport')(passport);
 

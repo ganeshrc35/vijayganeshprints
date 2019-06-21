@@ -31,11 +31,11 @@ module.exports = function(passport){
 	  		}
 	  	})
 	});
-	router.post('/login',passport.authenticate('local',{
-		failureRedirect:'/login',
-		successRedirect:'/profile',
-	}),function(req,res){
-		res.send('hello');
-	});
-	return router;
+	router.post('/login', passport.authenticate('local', {
+        failureRedirect: '/login',
+        successRedirect: '/',
+    }), function (req, res) {
+        res.send('hey')
+    })
+    return router;
 };
