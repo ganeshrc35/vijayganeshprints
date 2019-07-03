@@ -14,6 +14,10 @@ mongoose.connect('mongodb://localhost:27017/vijayganeshprints');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth')(passport);
+var orderRouter = require('./routes/orders');
+var apiRouter = require('./routes/api')(passport);
+
+var flash = require('express-flash-messages');
 
 var app = express();
 
@@ -26,6 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash())
 
 app.use(session({
 	secret:'thesecret',
@@ -39,6 +44,9 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth',authRouter);
+app.use('/orders',orderRouter);
+//REST API
+app.use('/api',apiRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

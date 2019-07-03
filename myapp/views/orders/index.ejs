@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <%- include ../partials/header.ejs %>
+    <body>
+        <%- include ../partials/menu.ejs %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>My Orders</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="/orders/create" class="btn btn-primary"> Create New Order </a>
+                </div>
+                <div class="col-xs-12">
+                    <% orders.forEach(function(order) { %>
+                        <p><%= order.no_of_copies %></p>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </body>
+    <%- include ../partials/scripts.ejs %>
+</html>

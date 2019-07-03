@@ -11,21 +11,17 @@ var loggedin = function(req,res,next){
 /* GET home page. */
 router.get('/', loggedin,function(req, res, next) {
 	if (req.user) {
-	  	/*res.render('users/show', {
-	    	title: req.user.first_name,
-	    	user: req.user
-	  	});*/
-	  	res.send('Hi'+req.user.first_name);
+	  	res.redirect('/orders');
     	// logged in
 	} else {
 	    // not logged in
 	    res.redirect('/login');
 	}
-  	// res.render('index', { title: 'Express' });
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login');
+	req.flash('notify', 'This is a test notification.')
+	res.render('login',{messages:req.flash('notify')});
 });
 
 router.get('/signup', function(req, res, next) {

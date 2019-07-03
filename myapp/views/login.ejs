@@ -1,23 +1,35 @@
-<%- include partials/header.ejs %>
+<!doctype html>
+<html lang="en">
+    <%- include partials/header.ejs %>
     <body>
-        <div class="container-fluid">
-            <form action="/auth/login" method="post" enctype="application/x-www-form-urlencoded">
-                <h2 class="text-center">Log in</h2>       
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="email" required="required" autocomplete="false">
+        <%- include partials/login-nav.ejs %>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <% if (typeof messages != 'undefined' && messages) { %>
+                        <div class="alert alert-success"><%- messages %></div>
+                        <% } %>
+                        <form action="/auth/login" method="post" enctype="application/x-www-form-urlencoded">
+                            <h2 class="text-center">Log in</h2>       
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="email" placeholder="email" required="required" autocomplete="false">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" required="required" autocomplete="false" name="password">
+                                <input type="hidden" name="csrf_token" value="">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                            </div>
+                            <div class="clearfix">
+                                <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
+                                <!-- <a href="#" class="pull-right">Forgot Password?</a> -->
+                            </div>        
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="required" autocomplete="false" name="password">
-                    <input type="hidden" name="csrf_token" value="">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
-                </div>
-                <div class="clearfix">
-                    <label class="pull-left checkbox-inline"><input type="checkbox"> Remember me</label>
-                    <a href="#" class="pull-right">Forgot Password?</a>
-                </div>        
-            </form>
+            </div>
             <p class="text-center"><a href="/signup">Create an Account</a></p>
         </div>
         <%- include partials/scripts.ejs %>   

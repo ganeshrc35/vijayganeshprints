@@ -24,7 +24,7 @@ module.exports = function(passport){
 	  						res.status(500).send(err.message)
 	  					}
 	  					else{
-	  						res.send(user);
+	  						res.redirect('/');
 	  					}
 	  				})
 	  			}
@@ -34,6 +34,7 @@ module.exports = function(passport){
 	router.post('/login', passport.authenticate('local', {
         failureRedirect: '/login',
         successRedirect: '/',
+        failureFlash: true
     }), function (req, res) {
         res.send('hey')
     })
