@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <%- include ../partials/header.ejs %>
+    <body>
+        <%- include ../partials/menu.ejs %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>My Customers</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="/customers/create" class="btn btn-primary"> Create New Customer </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-responsive">
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Contact Number</th>
+                            <th>Actions</th>
+                        </tr>
+                        <% customers.forEach(function(customer) { %>
+                            <tr>
+                                <td><%= customer.company_name %></td>
+                                <td><%= customer.contact_number %></td>
+                                <td>
+                                    <a href="/customers/edit/<%= customer._id %>" class="btn btn-info btn-sm">Edit Customer</a>
+                                    <!-- <a href="/orders/<%= customer._id %>" class="btn btn-primary btn-sm">View orders</a> -->
+                                    <!-- <a href="/customers/delete/<%= customer._id %>" class="btn btn-danger btn-sm">Delete Customer</a> -->
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+    <%- include ../partials/scripts.ejs %>
+</html>

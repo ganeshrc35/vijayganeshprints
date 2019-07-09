@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+    <%- include ../partials/header.ejs %>
+    <body>
+        <%- include ../partials/menu.ejs %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Edit Customer</label>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-body">
+                        <% if (typeof messages != 'undefined' && messages) { %>
+                        <div class="alert alert-success"><%- messages %></div>
+                        <% } %>
+                        <form action="/customers/edit/<%= user._id %>" method="post" enctype="">
+                            <div class="form-group">
+                                <label class="form-label">Customer First Name</label>
+                                <input type="text" class="form-control" placeholder="Customer First Name" required="required" name="first_name" value="<%= user.first_name %>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Customer Last Name</label>
+                                <input type="text" class="form-control" placeholder="Customer Last Name" required="required" name="last_name" value="<%= user.last_name %>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" class="form-control" placeholder="Company Name" name="company_name" required="required" value="<%= customer.company_name %>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" placeholder="Email" required="required" name="email" value="<%= user.email %>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" placeholder="Contact Number" required="required" name="contact_number" value="<%= customer.contact_number %>">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Address</label>
+                                <textarea class="form-control" placeholder="Address" required="required" name="address"><%= customer.address %></textarea>
+                            </div>
+                            <!-- <div class="form-group">
+                                <input type="file" class="form-control" placeholder="Upload Logo" name="logo"/>
+                            </div> -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Update Customer</button>
+                            </div>       
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <%- include ../partials/scripts.ejs %>
+</html>

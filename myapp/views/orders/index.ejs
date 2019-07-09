@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
-                    <label>My Orders</label>
+                    <label><%= customers.company_name %>'s Orders</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <a href="/orders/create" class="btn btn-primary"> Create New Order </a>
+                    <a href="/orders/create/<%= customers._id %>" class="btn btn-primary"> Create New Order </a>
                 </div>
                 <div class="col-xs-12">
                     <% orders.forEach(function(order) { %>

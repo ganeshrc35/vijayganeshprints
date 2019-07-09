@@ -11,7 +11,7 @@ var loggedin = function(req,res,next){
 /* GET home page. */
 router.get('/', loggedin,function(req, res, next) {
 	if (req.user) {
-	  	res.redirect('/orders');
+	  	res.redirect('/customers');
     	// logged in
 	} else {
 	    // not logged in

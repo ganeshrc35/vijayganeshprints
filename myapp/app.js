@@ -6,6 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
+var bodyParser = require('body-parser');
 
 require('./passport')(passport);
 
@@ -15,7 +16,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth')(passport);
 var orderRouter = require('./routes/orders');
-var apiRouter = require('./routes/api')(passport);
+var customerRouter = require('./routes/customers');
+var apiRouter = require('./routes/api');
 
 var flash = require('express-flash-messages');
 
@@ -31,6 +33,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash())
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 app.use(session({
 	secret:'thesecret',
@@ -45,6 +51,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth',authRouter);
 app.use('/orders',orderRouter);
+app.use('/customers',customerRouter);
 //REST API
 app.use('/api',apiRouter);
 // catch 404 and forward to error handler
